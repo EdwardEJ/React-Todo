@@ -7,7 +7,6 @@ export default function ToDoList(props) {
 
   const { toDoList } = props
 
-
   return (
     <div>
       {toDoList.map(item => (
