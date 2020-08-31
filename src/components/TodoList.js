@@ -5,12 +5,15 @@ import Todo from './Todo'
 
 export default function ToDoList(props) {
 
-  const { toDoList } = props
+  const { toDoList, toggleToDo } = props
 
   return (
     <div>
       {toDoList.map(item => (
-        <Todo key={item.id} item={item} />
+        <Todo key={item.id}
+          item={item}
+          toggleTodo={toggleToDo}
+        />
       ))}
     </div>
   )

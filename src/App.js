@@ -24,7 +24,24 @@ class App extends React.Component {
 
     this.state = {
       toDoList: toDoData,
+      toggleToDo: () => { },
     };
+  }
+
+  toggleToDo = (clickedItemId) => {
+
+    this.setState({
+      toDoList: this.state.toDoList.map(item => {
+        if (item.id === clickedItemId) {
+          return {
+            ...item,
+            completed: !item.completed
+          }
+        } else {
+          return item
+        }
+      })
+    })
   }
 
   addToDo = (toDo) => {
@@ -43,7 +60,8 @@ class App extends React.Component {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
-        <ToDoList toDoList={this.state.toDoList} />
+        <ToDoList toDoList={this.state.toDoList}
+          toggleTodo={this.toggleToDo} />
         <ToDoForm addToDo={this.addToDo} />
       </div>
     );

@@ -21,20 +21,21 @@ class ToDoForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input
-          type='text'
-          name='toDo'
-          value={this.state.toDoItem}
-          onChange={this.handleChanges}
-          placeholder='...todo'
-        />
-        <button>Add To Do</button>
+      <>
+        <form onSubmit={this.handleSubmit}>
+          <input
+            type='text'
+            name='toDo'
+            value={this.state.toDoItem}
+            onChange={this.handleChanges}
+            placeholder='...todo'
+          />
+          <button>Add To Do</button>
+        </form>
         <button>Clear Completed</button>
-      </form>
+      </>
     )
   }
-
 }
 
 export default ToDoForm

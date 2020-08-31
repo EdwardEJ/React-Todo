@@ -1,13 +1,14 @@
 import React from 'react'
 
 export default function Todo(props) {
-
-  const { item } = props;
-
+  const { item, toggleToDo } = props;
 
   return (
-    <div>
+    <div onClick={() => toggleToDo(item.id)}
+      className={!item.purchase ? "toDoLineThrough" : " "}
+    >
       {item.task}
+
     </div>
   )
 }
