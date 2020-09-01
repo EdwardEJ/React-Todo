@@ -10,11 +10,13 @@ export default function ToDoList(props) {
   return (
     <div>
       {toDoList.map(item => (
-        <Todo key={item.id}
+        <Todo
+          key={item.id}
           item={item}
-          toggleTodo={toggleToDo}
+          toggleToDo={toggleToDo}
         />
       ))}
+
     </div>
   )
 }

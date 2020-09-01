@@ -1,6 +1,7 @@
 import React from 'react';
 import ToDoList from './components/TodoList'
 import ToDoForm from './components/TodoForm'
+import './components/Todo.css'
 
 const toDoData = [
   {
@@ -24,7 +25,7 @@ class App extends React.Component {
 
     this.state = {
       toDoList: toDoData,
-      toggleToDo: () => { },
+      toDoItem: '',
     };
   }
 
@@ -44,6 +45,17 @@ class App extends React.Component {
     })
   }
 
+
+  onChange = e => {
+    this.setState({ [e.target.name]: e.target.value })
+  }
+
+  handleSubmit = e => {
+    e.preventDefault()
+    this.addToDo(this.state.toDoItem);
+    this.setState({ toDoItem: '' })
+  }
+
   addToDo = (toDo) => {
     const newToDo = {
       task: toDo,
@@ -56,13 +68,29 @@ class App extends React.Component {
     })
   }
 
+  clearToDo = e => {
+    e.preventDefault();
+    let toDos = this.state.toDoList.filter(todo => !todo.completed);
+    console.log(toDos)
+    this.setState({ toDoList: toDos });
+  }
+
   render() {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
-        <ToDoList toDoList={this.state.toDoList}
-          toggleTodo={this.toggleToDo} />
-        <ToDoForm addToDo={this.addToDo} />
+        <ToDoList
+          toDoList={this.state.toDoList}
+          toggleToDo={this.toggleToDo}
+        />
+
+        <ToDoForm
+          value={this.state.toDoItem}
+          onChange={this.onChange}
+          handleSubmit={this.handleSubmit}
+          clearToDo={this.clearToDo}
+          addToDo={this.addToDo}
+        />
       </div>
     );
   }

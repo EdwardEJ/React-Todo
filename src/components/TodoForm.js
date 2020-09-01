@@ -1,41 +1,23 @@
 import React from 'react'
 
-class ToDoForm extends React.Component {
-  constructor() {
-    super();
+export default function ToDoForm(props) {
 
-    this.state = {
-      toDoItem: '',
-    }
-  }
+  const { value, onChange, handleSubmit, clearToDo } = props;
 
-  handleChanges = e => {
-    this.setState({ toDoItem: e.target.value })
-  }
 
-  handleSubmit = e => {
-    e.preventDefault()
-    this.props.addToDo(this.state.toDoItem);
-    this.setState({ toDoItem: '' })
-  }
-
-  render() {
-    return (
-      <>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            type='text'
-            name='toDo'
-            value={this.state.toDoItem}
-            onChange={this.handleChanges}
-            placeholder='...todo'
-          />
-          <button>Add To Do</button>
-        </form>
-        <button>Clear Completed</button>
-      </>
-    )
-  }
+  return (
+    <>
+      <form>
+        <input
+          type='text'
+          name='toDoItem'
+          value={value}
+          onChange={onChange}
+          placeholder='...todo'
+        />
+        <button onClick={handleSubmit}>Add To Do</button>
+        <button onClick={clearToDo}>Clear Completed</button>
+      </form>
+    </>
+  )
 }
-
-export default ToDoForm

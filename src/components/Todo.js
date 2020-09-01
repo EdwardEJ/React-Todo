@@ -4,10 +4,11 @@ export default function Todo(props) {
   const { item, toggleToDo } = props;
 
   return (
-    <div onClick={() => toggleToDo(item.id)}
-      className={!item.purchase ? "toDoLineThrough" : " "}
+    <div
+      onClick={() => toggleToDo(item.id)}
+      className={item.completed ? "toDoLineThrough" : null}
     >
-      {item.task}
+      <p>{item.task}</p>
 
     </div>
   )
